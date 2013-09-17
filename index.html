@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+
+  <title>JQuery Nestedy - A nested fields creator</title>
+
+  <meta content="Washington Botelho" name="author">
+  <meta content="jQuery Nestedy - A nested fields creator" name="description">
+  <meta content="jquery,plugin,nested,field,dynamic,name,creator,rails,index" name="keywords">
+
+	<link type="text/css" rel="stylesheet" href="demo/css/application.css">
+
+  <script type="text/javascript" src="demo/js/jquery.min.js"></script>
+	<script type="text/javascript" src="lib/jquery.nestedy.min.js"></script>
+
+	<link href="/favicon.ico" rel="shortcut icon" type="image/x-icon">
+</head>
+<body>
+	<div id="wrapper">
+		<header role="banner">
+			<div id="logo">
+				<h1><a href="http://wbotelhos.com/nestedy" title="jQuery Nestedy">jQuery Nestedy</a></h1>
+				<p>A nested fields creator</p>
+			</div>
+
+			<nav role="navigation">
+			  <ul>
+			    <li><a href="http://github.com/wbotelhos/nestedy/archive/0.1.0.zip" title="Download" class="download"><i class="icon-download icon-large"></i>v0.1.0</a></li>
+          <li><a href="http://github.com/wbotelhos/nestedy" title="Github" target="_blank"><i class="icon-github icon-large"></i>Github</a></li>
+          <li><a href="http://wbotelhos.com/labs" title="yLab" target="_blank"><i class="icon-beaker icon-large"></i>yLab</a></li>
+          <li><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=X8HEP2878NDEG&amp;item_name=jQuery%20Nestedy" title="Donate" target="_blank"><i class="icon-heart-empty icon-large"></i>Donate</a></li>
+			  </ul>
+			</nav>
+		</header>
+
+    <div id="container">
+      <section role="main">
+        <article>
+          <h2 id="default">
+            <a href="#default">Default:</a>
+          </h2>
+
+          <p>
+            1. Create a form.<br />
+            1.1 Inside the form create the adder button with class <code>nestedy-add.</code><br />
+            1.2 Inside the form create a parent wrapper for all your fields with class <code>nestedy</code>;<br />
+            1.2.1 Inside <code>nestedy</code> create a wrapper for the set of fields that will be repeated with class <code>nestedy-item</code>.<br />
+            1.2.1.1 Inside <code>nestedy-item</code> create the remover button with class <code>nestedy-remove</code>.<br/>
+          </p>
+
+<div class="highlight">
+<pre>
+<span class="nt">&lt;form&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"nestedy"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"nestedy-item"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"product_prices_attributes_0_id"</span> <span class="na">name=</span><span class="s">"product[prices_attributes][0][id]"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"product_prices_attributes_0_name"</span> <span class="na">name=</span><span class="s">"product[prices_attributes][0][name]"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"product_prices_attributes_0_value"</span> <span class="na">name=</span><span class="s">"product[prices_attributes][0][value]"</span><span class="nt">&gt;</span>
+
+      <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"nestedy-remove"</span><span class="nt">&gt;&lt;/i&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+
+  <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"nestedy-add"</span><span class="nt">&gt;&lt;/i&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</pre>
+</div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'form'</span><span class="p">).</span><span class="nx">nestedy</span><span class="p">();</span>
+</pre>
+</div>
+
+          <p>
+            As you can see, by default jQuery Danymic will look for an id and name as <a href="http://rubyonrails.org/" target="_blank">Rails</a> style.<br />
+            <b>id</b>: the dynamic part is the number <code>_0_</code>.<br />
+            <b>name</b>: the dynamic part is the number <code>[0]</code>.
+          </p><br />
+
+          <div class="demo">
+            <form id="default-demo" action="" method="post">
+              <div class="nestedy">
+                <label class="hours">Hours</label>
+                <label class="check">Check</label>
+                <label class="select">Select</label>
+                <label class="radio">Radio</label>
+                <label class="description">Description</label>
+                <label class="value">Value</label>
+                <label class="remove"></label>
+
+                <div class="nestedy-item">
+                  <div class="hours-place">
+                    <input id="product_prices_attributes_0_hours" type="number" name="product[prices_attributes][0][hours]" class="input" />
+                  </div>
+
+                  <input id="product_prices_attributes_0_id" type="hidden" name="product[prices_attributes][0][id]" />
+
+                  <div class="check-place">
+                    <input id="product_prices_attributes_0_check1" type="checkbox" name="product[prices_attributes][0][check1]" class="input" />
+                    <input id="product_prices_attributes_0_check2" type="checkbox" name="product[prices_attributes][0][check2]" class="input" />
+                  </div>
+
+                  <div class="select-place">
+                    <select id="product_prices_attributes_0_select" name="product[prices_attributes][0][select]" class="input">
+                      <option></option>
+                      <option>1</option>
+                      <option>2</option>
+                    </select>
+                  </div>
+
+                  <div class="radio-place">
+                    <input id="product_prices_attributes_0_radio" type="radio" name="product[prices_attributes][0][radio]" class="input" />
+                    <input id="product_prices_attributes_0_radio" type="radio" name="product[prices_attributes][0][radio]" class="input" />
+                  </div>
+
+                  <div class="description-place">
+                    <input id="product_prices_attributes_0_description" type="text" name="product[prices_attributes][0][description]" class="input" />
+                  </div>
+
+                  <div class="value-place">
+                    <input id="product_prices_attributes_0_value" type="number" name="product[prices_attributes][0][value]" class="input" />
+                  </div>
+
+                  <div class="remove-place">
+                    <i class="nestedy-remove"></i>
+                  </div>
+                </div>
+              </div>
+
+              <i class="nestedy-add">add</i>
+            </form>
+          </div>
+
+        <h2 id="idx">
+            <a href="#idx">Idx:</a>
+          </h2>
+
+          <p>
+            You can change the way the dynamic part of the field name will be scanned, using <a href="http://en.wikipedia.org/wiki/Regular_expression" target="blank">Regular Expression</a><br />
+            You can to use one or two groups, one before and other after the dynamic value, to be more specific about what to replace, like: <code>/(-)\d(-)/</code>.
+          </p>
+
+<div class="highlight">
+<pre>
+<span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"some-0-value"</span><span class="nt">&gt;</span>
+</pre>
+</div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'form'</span><span class="p">).</span><span class="nx">nestedy</span><span class="p">({</span> <span class="nx">idx</span><span class="o">:</span> <span class="sr">/\d/</span> <span class="p">});</span>
+</pre>
+</div>
+
+          <div class="demo">
+            <form id="idx-demo" action="" method="post">
+              <div class="nestedy">
+                <div class="nestedy-item">
+                  <input id="some-0-value" type="number" name="some[0][value]" class="input big" />
+                  <i class="nestedy-remove"></i>
+                </div>
+              </div>
+
+              <i class="nestedy-add">add</i>
+            </form>
+          </div>
+
+          <h2 id="namex">
+            <a href="#namex">Namex:</a>
+          </h2>
+
+          <p>
+            You can change the way the dynamic part of the field id will be scanned, using <a href="http://en.wikipedia.org/wiki/Regular_expression" target="blank">Regular Expression</a><br />
+            You can to use one or two groups, one before and other after the dynamic value, to be more specific about what to replace, like: <code>/(\[)\d(\])/</code>.<br />
+            The following example has the same characters surrouning the <code>{index}</code>, we need to be more specific using group. Just one before is enough.<br />
+            Remember: we scan just one group before and one after the dynamic value, if it exists.
+          </p>
+
+<div class="highlight">
+<pre>
+<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"some[{index}][attributes][{index}][value]"</span><span class="nt">&gt;</span>
+</pre>
+</div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'form'</span><span class="p">).</span><span class="nx">nestedy</span><span class="p">({</span> <span class="nx">idx</span><span class="o">:</span> <span class="sr">/{index}(\]\[value)/</span> <span class="p">});</span>
+</pre>
+</div>
+
+          <div class="demo">
+            <form id="namex-demo" action="" method="post">
+              <div class="nestedy">
+                <div class="nestedy-item">
+                  <input type="number" name="some[{index}][attributes][{index}][value]" class="input big" />
+                  <i class="nestedy-remove"></i>
+                </div>
+              </div>
+
+              <i class="nestedy-add">add</i>
+            </form>
+          </div>
+
+          <h2 id="addButton">
+            <a href="#addButton">Add Button:</a>
+          </h2>
+
+          <p>
+            Changes the add button bind.<br />
+            The following example will ignore the default <code>nestedy-add</code> and bind the <code>add</code> one.
+          </p>
+
+<div class="highlight">
+<pre>
+<span class="nt">&lt;form&gt;</span>
+  <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"nestedy-add"</span><span class="nt">&gt;&lt;/i&gt;</span>
+  <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"add"</span><span class="nt">&gt;&lt;/i&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</pre>
+</div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'form'</span><span class="p">).</span><span class="nx">nestedy</span><span class="p">({</span> <span class="nx">addButton</span><span class="o">:</span> <span class="s1">'.add'</span> <span class="p">});</span>
+</pre>
+</div>
+
+          <h2 id="removeButton">
+            <a href="#removeButton">Remove Button:</a>
+          </h2>
+
+          <p>
+            Changes the remove button bind.<br />
+            The following example will ignore the default <code>nestedy-remove</code> and bind the <code>remove</code> one.
+          </p>
+
+<div class="highlight">
+<pre>
+<span class="nt">&lt;form&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"nestedy"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"nestedy-item"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"nestedy-remove"</span><span class="nt">&gt;&lt;/i&gt;</span>
+      <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"remove"</span><span class="nt">&gt;&lt;/i&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</pre>
+</div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'form'</span><span class="p">).</span><span class="nx">nestedy</span><span class="p">({</span> <span class="nx">removeButton</span><span class="o">:</span> <span class="s1">'.remove'</span> <span class="p">});</span>
+</pre>
+</div>
+
+          <h2 id="content">
+            <a href="#content">Content:</a>
+          </h2>
+
+          <p>
+            Changes the place where the items will be inserted.
+          </p>
+
+          <div class="demo">
+            <form id="content-demo" action="" method="post">
+              <div class="nestedy">
+                <div class="nestedy-item">
+                  <div class="value-place">
+                    <input id="product_prices_attributes_0_value" type="number" name="product[prices_attributes][0][value]" class="input" />
+                  </div>
+
+                  <div class="remove-place">
+                    <i class="nestedy-remove"></i>
+                  </div>
+                </div>
+              </div>
+
+              <div class="content"></div>
+
+              <i class="nestedy-add">add</i>
+            </form>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nt">&lt;form&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"nestedy"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"nestedy-item"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"product_prices_attributes_0_value"</span> <span class="na">name=</span><span class="s">"product[prices_attributes][0][value]"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"nestedy-remove"</span><span class="nt">&gt;&lt;/i&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span><span class="nt">&lt;/div&gt;</span>
+
+  <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"nestedy-add"</span><span class="nt">&gt;&lt;/i&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</pre>
+</div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'form'</span><span class="p">).</span><span class="nx">nestedy</span><span class="p">({</span> <span class="nx">content</span><span class="o">:</span> <span class="s1">'.content'</span> <span class="p">});</span>
+</pre>
+</div>
+
+          <h2 id="excludes">
+            <a href="#excludes">Excludes:</a>
+          </h2>
+
+          <p>
+            Fields to be excluded on <code>add</code> action.<br />
+            By default all fields with ID ended with <code>id</code> or name ended with <code>id</code> or <code>id]</code>, will be excluded.<br />
+            You can pass more than one field to be excluded using the id, class or any field's attribute: <code>excludes: ['name="foo"', '#bar', '.foo', 'name~=bar']</code><br />
+            The following example keeps the default <code>excludes</code> and add one more selector.
+          </p>
+
+          <div class="demo">
+            <form id="excludes-demo" action="" method="post">
+              <div class="nestedy">
+                <label class="hours">Hours</label>
+                <label class="check">Check</label>
+                <label class="select">Select</label>
+                <label class="radio">Radio</label>
+                <label class="description">Description</label>
+                <label class="value">Value</label>
+                <label class="remove"></label>
+
+                <div class="nestedy-item">
+                  <div class="hours-place">
+                    <input id="product_prices_attributes_0_hours" type="number" name="product[prices_attributes][0][hours]" class="input" />
+                  </div>
+
+                  <input id="product_prices_attributes_0_id" type="hidden" name="product[prices_attributes][0][id]" />
+
+                  <div class="check-place">
+                    <input id="product_prices_attributes_0_check1" type="checkbox" name="product[prices_attributes][0][check1]" class="input" />
+                    <input id="product_prices_attributes_0_check2" type="checkbox" name="product[prices_attributes][0][check2]" class="input" />
+                  </div>
+
+                  <div class="select-place">
+                    <select id="product_prices_attributes_0_select" name="product[prices_attributes][0][select]" class="input">
+                      <option></option>
+                      <option>1</option>
+                      <option>2</option>
+                    </select>
+                  </div>
+
+                  <div class="radio-place">
+                    <input id="product_prices_attributes_0_radio" type="radio" name="product[prices_attributes][0][radio]" class="input" />
+                    <input id="product_prices_attributes_0_radio" type="radio" name="product[prices_attributes][0][radio]" class="input" />
+                  </div>
+
+                  <div class="description-place">
+                    <input id="product_prices_attributes_0_description" type="text" name="product[prices_attributes][0][description]" class="input" />
+                  </div>
+
+                  <div class="value-place">
+                    <input id="product_prices_attributes_0_value" type="number" name="product[prices_attributes][0][value]" class="input" />
+                  </div>
+
+                  <div class="remove-place">
+                    <i class="nestedy-remove"></i>
+                  </div>
+                </div>
+              </div>
+
+              <i class="nestedy-add">add</i>
+            </form>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'form'</span><span class="p">).</span><span class="nx">nestedy</span><span class="p">({</span>
+  <span class="nx">excludes</span><span class="o">:</span> <span class="p">[</span>
+    <span class="s1">'id$="id"'</span><span class="p">,</span>
+    <span class="s1">'name$="id"'</span><span class="p">,</span>
+    <span class="s1">'name$="id\\]"'</span><span class="p">,</span>
+    <span class="s1">'#product_prices_attributes_0_value'</span>
+  <span class="p">]</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+          <h2 id="focus">
+            <a href="#focus">Focus:</a>
+          </h2>
+
+          <p>
+            You can choose via <a href="http://api.jquery.com/category/selectors/" target="_blank">jQuery Selectors</a> which item block will be focused.<br />
+            By default the last one always will be focused, but you can change it or even disable with <code>undefined</code>.<br />
+            The follow example set the focus on the first item.<br />
+          </p>
+
+          <div class="demo">
+            <form id="focus-demo" action="" method="post">
+              <div class="nestedy">
+                <div class="nestedy-item">
+                  <input type="number" name="some[0][value]" class="input big" />
+                  <i class="nestedy-remove"></i>
+                </div>
+              </div>
+
+              <i class="nestedy-add">add</i>
+            </form>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'form'</span><span class="p">).</span><span class="nx">nestedy</span><span class="p">({</span> <span class="nx">focus</span><span class="o">:</span> <span class="s1">':first'</span> <span class="p">});</span>
+</pre>
+</div>
+
+          <h2 id="model">
+            <a href="#model">Model:</a>
+          </h2>
+
+          <p>
+            Model is the wrapper that will keeps all your fields.<br />
+            You can change the model search.
+          </p>
+
+          <div class="demo">
+            <form id="model-demo" action="" method="post">
+              <div class="nestedy">
+                <div class="model">
+                  <input type="text" name="some[0][value]" class="input big" />
+                  <i class="nestedy-remove"></i>
+                </div>
+              </div>
+
+              <i class="nestedy-add">add</i>
+            </form>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nt">&lt;form&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"nestedy"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"model"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"some[0][value]"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"nestedy-remove"</span><span class="nt">&gt;&lt;/i&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+
+  <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"nestedy-add"</span><span class="nt">&gt;</span>add<span class="nt">&lt;/i&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</pre>
+</div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'form'</span><span class="p">).</span><span class="nx">nestedy</span><span class="p">({</span> <span class="nx">model</span><span class="o">:</span> <span class="s1">'.model'</span> <span class="p">});</span>
+</pre>
+</div>
+
+          <h2 id="template">
+            <a href="#template">Template:</a>
+          </h2>
+
+          <p>
+            If you want to use a <a href="#model">model</a> that lives outside your form, the best way is to use the template option.<br />
+            This option receives a selector and is cloned to inside the <code>nestedy</code> wrapper.<br />
+            Using this options you should avoid to use an ID for the template equal someone that will be generated inside the form dynamically. ID should be unique!<br />
+          </p>
+
+          <div class="demo">
+            <div id="templaty" class="nestedy-item">
+              <input id="some_{index}_value" type="text" name="some[{index}][value]" class="input big" />
+              <i class="nestedy-remove"></i>
+            </div>
+
+            <form id="template-demo" action="" method="post">
+              <div class="nestedy"></div>
+
+              <i class="nestedy-add">add</i>
+            </form>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"template"</span> <span class="na">class=</span><span class="s">"nestedy-item"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"some_{index}_value"</span> <span class="na">name=</span><span class="s">"some[{index}][value]"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"nestedy-remove"</span><span class="nt">&gt;&lt;/i&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;form</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"nestedy"</span><span class="nt">&gt;&lt;/div&gt;</span>
+
+  <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"nestedy-add"</span><span class="nt">&gt;&lt;/i&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</pre>
+</div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'form'</span><span class="p">).</span><span class="nx">nestedy</span><span class="p">({</span>
+  <span class="nx">idx</span>     <span class="o">:</span> <span class="sr">/{index}/</span><span class="p">,</span>
+  <span class="nx">namex</span>   <span class="o">:</span> <span class="sr">/{index}/</span><span class="p">,</span>
+  <span class="nx">template</span><span class="o">:</span> <span class="s1">'#template'</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+          <h2 id="add">
+            <a href="#add">Add:</a>
+          </h2>
+
+          <p>
+            It is a callback triggered before all add action. You can intercept the action and return <code>false</code> to avoid it.
+          </p>
+
+          <div class="demo">
+            <form id="add-demo" action="" method="post">
+              <div class="nestedy">
+                <div class="nestedy-item">
+                  <input type="text" name="some[0][value]" class="input big" />
+                  <i class="nestedy-remove"></i>
+                </div>
+              </div>
+
+              <i class="nestedy-add">add</i>
+            </form>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'form'</span><span class="p">).</span><span class="nx">nestedy</span><span class="p">({</span>
+  <span class="nx">add</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="k">this</span> <span class="o">+</span> <span class="s1">', '</span> <span class="o">+</span> <span class="nx">item</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+          <h2 id="remove">
+            <a href="#remove">Remove:</a>
+          </h2>
+
+          <p>
+            It is a callback triggered before all remove action. You can intercept the action and return <code>false</code> to avoid it.
+          </p>
+
+          <div class="demo">
+            <form id="remove-demo" action="" method="post">
+              <div class="nestedy">
+                <div class="nestedy-item">
+                  <input type="text" name="some[0][value]" class="input big" />
+                  <i class="nestedy-remove"></i>
+                </div>
+              </div>
+
+              <i class="nestedy-add">add</i>
+            </form>
+          </div>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'form'</span><span class="p">).</span><span class="nx">nestedy</span><span class="p">({</span>
+  <span class="nx">remove</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="k">this</span> <span class="o">+</span> <span class="s1">', '</span> <span class="o">+</span> <span class="nx">item</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+          <h2 id="global">
+            <a href="#global">Changing the settings globally:</a>
+          </h2>
+
+          <p>
+            You can change any option mentioning the scope <code>$.fn.nestedy.defaults.</code> + <i>option_name</i>. It must be called before you bind the plugin.
+          </p>
+
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">nestedy</span><span class="p">.</span><span class="nx">defaults</span><span class="p">.</span><span class="nx">focus</span> <span class="o">=</span> <span class="s1">':first'</span><span class="p">;</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">nestedy</span><span class="p">.</span><span class="nx">defaults</span><span class="p">.</span><span class="nx">content</span> <span class="o">=</span> <span class="s1">'.target'</span><span class="p">;</span>
+</pre>
+</div>
+
+          <h2 id="options">
+            <a href="#options">Options:</a>
+          </h2>
+
+          <div id="add" class="option">
+            <div>add: <span>undefined</span></div>
+            <p>Callback trigged when the add button is clicked.</p>
+          </div>
+
+          <div id="addButton" class="option">
+            <div>addButton: <span>'.nestedy-add'</span></div>
+            <p>The add button element.</p>
+          </div>
+
+          <div id="content" class="option">
+            <div>content: <span>'.nestedy'</span></div>
+            <p>Place where the items will be copied.</p>
+          </div>
+
+          <div id="excludes" class="option">
+            <div>excludes: <span>['id$="id"', 'ame$="id"', 'name$="id\\]"']</span></div>
+            <p>Selectors used to exclude field of a item before clone it.</p>
+          </div>
+
+          <div id="focus" class="option">
+            <div>focus: <span>':last'</span></div>
+            <p>The item you want focus, you can choose <code>:first</code>, <code>:last</code> or <code>undefined</code>.</p>
+          </div>
+
+          <div id="idx" class="option">
+            <div>idx: <span>/(_)\d(_)/</span></div>
+            <p>Regex used to find the dynamic parte of the id of the field that will be changed.</p>
+          </div>
+
+          <div id="model" class="option">
+            <div>model: <span>'.nestedy-item'</span></div>
+            <p>The element inside the <code>content</code> that will be used as a model to be cloned.</p>
+          </div>
+
+          <div id="namex" class="option">
+            <div>namex: <span>/(\[)\d(\])/</span></div>
+            <p>Regex used to find the dynamic parte of the name of the field that will be changed.</p>
+          </div>
+
+          <div id="remove" class="option">
+            <div>remove: <span>undefined</span></div>
+            <p>Callback trigged before an item be removed.</p>
+          </div>
+
+          <div id="removeButton" class="option">
+            <div>removeButton: <span>'.nestedy-remove'</span></div>
+            <p>The class name of the remove button.</p>
+          </div>
+
+          <div id="template" class="option">
+            <div>template: <span>undefined</span></div>
+            <p>The element inside the <code>body</code> that will be used as a model to be cloned.</p>
+          </div>
+
+          <h2 id="functions">
+            <a href="#functions">Functions:</a>
+          </h2>
+
+            <div id="add-function" class="function">
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'form'</span><span class="p">).</span><span class="nx">nestedy</span><span class="p">(</span><span class="s1">'add'</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+</pre>
+</div>
+              <p>Adds a number of items. Ommiting the number, 1 is de default.</p> </p>
+            </div>
+
+          <div id="remove-function" class="function">
+<div class="highlight">
+<pre>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'form'</span><span class="p">).</span><span class="nx">nestedy</span><span class="p">(</span><span class="s1">'remove'</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+</pre>
+</div>
+              <p>Removes a item that can be the <code>first</code>, <code>last</code> or a specific number like <code>3</code>. Ommiting it, <code>last</code> is de default.</p>
+            </div>
+
+          <div class="demo">
+            <form id="demo" action="" method="post">
+              <div class="nestedy">
+                <div class="nestedy-item">
+                  <input id="some_0_value" type="text" name="some[0][value]" class="input big" />
+                  <i class="nestedy-remove"></i>
+                </div>
+              </div>
+
+              <i class="nestedy-add">add</i>
+            </form>
+
+            <div class="demo">
+              <label for="add-function-demo">add:</label>
+              <input id="add-function-demo" type="text" value="2" />
+
+              <a id="add-action" href="javascript:void(0);" title="add" class="run">run</a>
+            </div>
+
+            <div class="demo">
+              <label for="remove-function-demo">remove:</label>
+              <input id="remove-function-demo" type="text" value="first" />
+
+              <a id="remove-action" href="javascript:void(0);" title="remove" class="run">run</a>
+            </div>
+          </div>
+
+          <h2 id="tests">
+            <a href="#tests">Tests:</a>
+          </h2>
+
+          <p>
+            This plugin is tested to work better.
+            <a href="http://wbotelhos.com/nestedy/spec/index.html" target="_blank">Check it out!</a>
+          </p>
+        </article>
+      </section>
+    </div>
+
+    <footer role="contentinfo">
+      &copy; 2013 <a href="http://wbotelhos.com" title="wbotelhos.com">wbotelhos.com</a>
+    </footer>
+  </div>
+
+  <script type="text/javascript">
+    $(function() {
+      $('#default-demo').nestedy();
+
+      $('#idx-demo').nestedy({ idx: /\d/ });
+
+      $('#namex-demo').nestedy({ namex: /(\[){index}(\]\[value)/ });
+
+      $('#content-demo').nestedy({ content: '.content' });
+
+      $('#excludes-demo').nestedy({
+        excludes: [
+          'id$="id"',
+          'name$="id"',
+          'name$="id\\]"',
+          '#product_prices_attributes_0_value'
+        ]
+      });
+
+      $('#focus-demo').nestedy({ focus: ':first' });
+
+      $('#model-demo').nestedy({ model: '.model' });
+
+      $('#template-demo').nestedy({
+        idx      : /{index}/,
+        namex    : /{index}/,
+        template : '#templaty'
+      });
+
+      $('#add-demo').nestedy({
+        add: function(item) {
+          alert(this + ', ' + item)
+        }
+      });
+
+      $('#remove-demo').nestedy({
+        remove: function(item) {
+          alert(this + ', ' + item)
+        }
+      });
+
+      $('#demo').nestedy();
+
+      $('#add-action').on('click', function() {
+        $('#demo').nestedy('add', $('#add-function-demo').val());
+      });
+
+      $('#remove-action').on('click', function() {
+        $('#demo').nestedy('remove', $('#remove-function-demo').val());
+      });
+    });
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-719499234-20', 'wbotelhos.com');
+    ga('send', 'pageview');
+  </script>
+</body>
+</html>
