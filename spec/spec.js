@@ -19,6 +19,18 @@ describe('Nestedy', function() {
             '<input id="product_prices_attributes_0_radio" type="radio" name="product[prices_attributes][0][radio]" />' +
             '<input id="product_prices_attributes_0_description" type="text" name="product[prices_attributes][0][description]" />' +
             '<input id="product_prices_attributes_0_value" type="number" name="product[prices_attributes][0][value]" />' +
+            '<input id="product_prices_attributes_0_color" type="color" name="product[prices_attributes][0][color]" />' +
+            '<input id="product_prices_attributes_0_date" type="date" name="product[prices_attributes][0][date]" />' +
+            '<input id="product_prices_attributes_0_datetime" type="datetime" name="product[prices_attributes][0][datetime]" />' +
+            '<input id="product_prices_attributes_0_datetime-local" type="datetime-local" name="product[prices_attributes][0][datetime-local]" />' +
+            '<input id="product_prices_attributes_0_email" type="email" name="product[prices_attributes][0][email]" />' +
+            '<input id="product_prices_attributes_0_month" type="month" name="product[prices_attributes][0][month]" />' +
+            '<input id="product_prices_attributes_0_range" type="range" name="product[prices_attributes][0][range]" min="1" max="10" />' +
+            '<input id="product_prices_attributes_0_search" type="search" name="product[prices_attributes][0][search]" />' +
+            '<input id="product_prices_attributes_0_tel" type="tel" name="product[prices_attributes][0][tel]" />' +
+            '<input id="product_prices_attributes_0_time" type="time" name="product[prices_attributes][0][time]" />' +
+            '<input id="product_prices_attributes_0_url" type="url" name="product[prices_attributes][0][url]" />' +
+            '<input id="product_prices_attributes_0_week" type="week" name="product[prices_attributes][0][week]" />' +
 
             '<i class="nestedy-remove">remove</i>' +
           '</div>' +
@@ -135,6 +147,201 @@ describe('Nestedy', function() {
 
         // then
         expect(self.find('.nestedy-item:last').find('input:radio')).not.toBeChecked();
+      });
+    });
+
+    context('number field', function() {
+      it ('clears it', function() {
+        // given
+        var self = $('form').nestedy();
+
+        self.find('.nestedy-item:first').find('input[type="number"]').val(1);
+
+        // when
+        self[0].addButton.click();
+
+        // then
+        expect(self.find('.nestedy-item:last').find('input[type="number"]').val()).toEqual('');
+      });
+    });
+
+    context('color field', function() {
+      it ('resets to default value', function() {
+        // given
+        var self = $('form').nestedy();
+
+        self.find('.nestedy-item:first').find('input[type="color"]').val('#FF0000');
+
+        // when
+        self[0].addButton.click();
+
+        // then
+        expect(self.find('.nestedy-item:last').find('input[type="color"]').val()).toEqual('#000000');
+      });
+    });
+
+    context('date field', function() {
+      it ('clears it', function() {
+        // given
+        var self = $('form').nestedy();
+
+        self.find('.nestedy-item:first').find('input[type="date"]').val('05/26/1984');
+
+        // when
+        self[0].addButton.click();
+
+        // then
+        expect(self.find('.nestedy-item:last').find('input[type="date"]').val()).toEqual('');
+      });
+    });
+
+    context('datetime field', function() {
+      it ('clears it', function() {
+        // given
+        var self = $('form').nestedy();
+
+        self.find('.nestedy-item:first').find('input[type="datetime"]').val('05/26/1984 11:21:32');
+
+        // when
+        self[0].addButton.click();
+
+        // then
+        expect(self.find('.nestedy-item:last').find('input[type="datetime"]').val()).toEqual('');
+      });
+    });
+
+    context('datetime-local field', function() {
+      it ('clears it', function() {
+        // given
+        var self = $('form').nestedy();
+
+        self.find('.nestedy-item:first').find('input[type="datetime"]').val('05/26/1984 11:21 AM');
+
+        // when
+        self[0].addButton.click();
+
+        // then
+        expect(self.find('.nestedy-item:last').find('input[type="datetime"]').val()).toEqual('');
+      });
+    });
+
+    context('email field', function() {
+      it ('clears it', function() {
+        // given
+        var self = $('form').nestedy();
+
+        self.find('.nestedy-item:first').find('input[type="email"]').val('some@email.com');
+
+        // when
+        self[0].addButton.click();
+
+        // then
+        expect(self.find('.nestedy-item:last').find('input[type="email"]').val()).toEqual('');
+      });
+    });
+
+    context('month field', function() {
+      it ('clears it', function() {
+        // given
+        var self = $('form').nestedy();
+
+        self.find('.nestedy-item:first').find('input[type="month"]').val('09-2013');
+
+        // when
+        self[0].addButton.click();
+
+        // then
+        expect(self.find('.nestedy-item:last').find('input[type="month"]').val()).toEqual('');
+      });
+    });
+
+    context('range field', function() {
+      it ('resets to default value', function() {
+        // given
+        var self = $('form').nestedy();
+
+        self.find('.nestedy-item:first').find('input[type="range"]').val('2');
+
+        // when
+        self[0].addButton.click();
+
+        // then
+        expect(self.find('.nestedy-item:last').find('input[type="range"]').val()).toEqual('6');
+      });
+    });
+
+    context('search field', function() {
+      it ('clears it', function() {
+        // given
+        var self = $('form').nestedy();
+
+        self.find('.nestedy-item:first').find('input[type="search"]').val('google it');
+
+        // when
+        self[0].addButton.click();
+
+        // then
+        expect(self.find('.nestedy-item:last').find('input[type="search"]').val()).toEqual('');
+      });
+    });
+
+    context('tel field', function() {
+      it ('clears it', function() {
+        // given
+        var self = $('form').nestedy();
+
+        self.find('.nestedy-item:first').find('input[type="tel"]').val('+55 (11) 555-5555');
+
+        // when
+        self[0].addButton.click();
+
+        // then
+        expect(self.find('.nestedy-item:last').find('input[type="tel"]').val()).toEqual('');
+      });
+    });
+
+    context('time field', function() {
+      it ('clears it', function() {
+        // given
+        var self = $('form').nestedy();
+
+        self.find('.nestedy-item:first').find('input[type="time"]').val('11:21 AM');
+
+        // when
+        self[0].addButton.click();
+
+        // then
+        expect(self.find('.nestedy-item:last').find('input[type="time"]').val()).toEqual('');
+      });
+    });
+
+    context('url field', function() {
+      it ('clears it', function() {
+        // given
+        var self = $('form').nestedy();
+
+        self.find('.nestedy-item:first').find('input[type="url"]').val('http://www.someurl.com');
+
+        // when
+        self[0].addButton.click();
+
+        // then
+        expect(self.find('.nestedy-item:last').find('input[type="url"]').val()).toEqual('');
+      });
+    });
+
+    context('week field', function() {
+      it ('clears it', function() {
+        // given
+        var self = $('form').nestedy();
+
+        self.find('.nestedy-item:first').find('input[type="week"]').val('2013-W32');
+
+        // when
+        self[0].addButton.click();
+
+        // then
+        expect(self.find('.nestedy-item:last').find('input[type="week"]').val()).toEqual('');
       });
     });
   });
