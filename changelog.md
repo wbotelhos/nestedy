@@ -1,5 +1,9 @@
 # jQuery Nestedy - A nested fields creator - http://wbotelhos.com/nestedy
 
+## 0.1.1
+
+- Added new options checkable, selectable and typeful to fix the clear method.
+
 ## 0.1.0
 
 - Option 'add' that is the callback for add action;
