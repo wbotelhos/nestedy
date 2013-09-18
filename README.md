@@ -5,7 +5,7 @@ jQuery Nestedy is a plugin to create dynamically nested fields.
 ## Version
 
 ```
-@version        0.1.0
+@version        0.1.1
 @since          2013-08-14
 @author         Washington Botelho
 @documentation  wbotelhos.com/nestedy
@@ -20,16 +20,35 @@ jQuery Nestedy is a plugin to create dynamically nested fields.
 
 ```js
 add          : undefined                                  // Callback trigged when the add button is clicked.
-addButton    : '.nestedy-add'                              // The add button element.
-content      : '.nestedy'                                  // Place where the items will be copied.
+addButton    : '.nestedy-add'                             // The add button element.
+checkable    : ['checkbox', 'radio']                      // The checkable fields. This fields will be checked with checked="checked".
+content      : '.nestedy'                                 // Place where the items will be copied.
 excludes     : ['id$="id"', 'ame$="id"', 'name$="id\\]"'] // Selectors used to exclude field of a item before clone it.
 focus        : ':last'                                    // The item you want focus, you can choose `:first`, `:last` or `undefined`.
 idx          : /(_)\d(_)/                                 // Regex used to find the dynamic parte of the id of the field that will be changed.
-model        : '.nestedy-item'                             // The element inside the `content` that will be used as a model to be cloned.
+model        : '.nestedy-item'                            // The element inside the `content` that will be used as a model to be cloned.
 namex        : /(\[)\d(\])/                               // Regex used to find the dynamic parte of the name of the field that will be changed.
 remove       : undefined                                  // Callback trigged before an item be removed.
-removeButton : '.nestedy-remove'                           // The class name of the remove button.
+removeButton : '.nestedy-remove'                          // The class name of the remove button.
+selectable   : ['select-one', 'select-multiple']          // The selectable fields. This fields will be selected with selected="selected"
 template     : undefined                                  // The element inside the `body` that will be used as a model to be cloned.
+typeful      : [                                          // The typeful fields.
+                'color',
+                'date',
+                'datetime',
+                'datetime-local',
+                'email',
+                'month',
+                'number',
+                'range',
+                'search',
+                'tel',
+                'text',
+                'textarea',
+                'time',
+                'url',
+                'week
+              ]
 ```
 
 ## Usage without template
