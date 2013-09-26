@@ -24,7 +24,9 @@ describe('Nestedy', function() {
             '<input id="product_prices_attributes_0_datetime" type="datetime" name="product[prices_attributes][0][datetime]" />' +
             '<input id="product_prices_attributes_0_datetime-local" type="datetime-local" name="product[prices_attributes][0][datetime-local]" />' +
             '<input id="product_prices_attributes_0_email" type="email" name="product[prices_attributes][0][email]" />' +
+            '<input id="product_prices_attributes_0_hidden" type="hidden" name="product[prices_attributes][0][hidden]" />' +
             '<input id="product_prices_attributes_0_month" type="month" name="product[prices_attributes][0][month]" />' +
+            '<input id="product_prices_attributes_0_password" type="password" name="product[prices_attributes][0][password]" />' +
             '<input id="product_prices_attributes_0_range" type="range" name="product[prices_attributes][0][range]" min="1" max="10" />' +
             '<input id="product_prices_attributes_0_search" type="search" name="product[prices_attributes][0][search]" />' +
             '<input id="product_prices_attributes_0_tel" type="tel" name="product[prices_attributes][0][tel]" />' +
@@ -240,6 +242,21 @@ describe('Nestedy', function() {
       });
     });
 
+    context('hidden field', function() {
+      it ('clears it', function() {
+        // given
+        var self = $('form').nestedy();
+
+        self.find('.nestedy-item:first').find('input[type="hidden"]').val('some text');
+
+        // when
+        self[0].addButton.click();
+
+        // then
+        expect(self.find('.nestedy-item:last').find('input[type="hidden"]').val()).toEqual('');
+      });
+    });
+
     context('month field', function() {
       it ('clears it', function() {
         // given
@@ -252,6 +269,21 @@ describe('Nestedy', function() {
 
         // then
         expect(self.find('.nestedy-item:last').find('input[type="month"]').val()).toEqual('');
+      });
+    });
+
+    context('password field', function() {
+      it ('clears it', function() {
+        // given
+        var self = $('form').nestedy();
+
+        self.find('.nestedy-item:first').find('input[type="password"]').val('some password');
+
+        // when
+        self[0].addButton.click();
+
+        // then
+        expect(self.find('.nestedy-item:last').find('input[type="password"]').val()).toEqual('');
       });
     });
 

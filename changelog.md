@@ -1,5 +1,9 @@
 # jQuery Nestedy - A nested fields creator - http://wbotelhos.com/nestedy
 
+## 0.1.2
+
+- Added some fields types of HTML 4 and 5 to typeful option.
+
 ## 0.1.1
 
 - Added new options checkable, selectable and typeful to fix the clear method.

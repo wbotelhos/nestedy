@@ -5,7 +5,7 @@ jQuery Nestedy is a plugin to create dynamically nested fields.
 ## Version
 
 ```
-@version        0.1.1
+@version        0.1.2
 @since          2013-08-14
 @author         Washington Botelho
 @documentation  wbotelhos.com/nestedy
@@ -33,21 +33,23 @@ removeButton : '.nestedy-remove'                          // The class name of t
 selectable   : ['select-one', 'select-multiple']          // The selectable fields. This fields will be selected with selected="selected"
 template     : undefined                                  // The element inside the `body` that will be used as a model to be cloned.
 typeful      : [                                          // The typeful fields.
-                'color',
-                'date',
-                'datetime',
-                'datetime-local',
-                'email',
-                'month',
-                'number',
-                'range',
-                'search',
-                'tel',
-                'text',
-                'textarea',
-                'time',
-                'url',
-                'week
+                 'color',
+                 'date',
+                 'datetime',
+                 'datetime-local',
+                 'email',
+                 'hidden',
+                 'month',
+                 'number',
+                 'password',
+                 'range',
+                 'search',
+                 'tel',
+                 'text',
+                 'textarea',
+                 'time',
+                 'url',
+                 'week'
               ]
 ```
 
