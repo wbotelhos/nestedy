@@ -29,7 +29,7 @@
 
 			<nav role="navigation">
 			  <ul>
-			    <li><a href="http://github.com/wbotelhos/nestedy/archive/0.1.1.zip" title="Download" class="download"><i class="icon-download icon-large"></i>v0.1.1</a></li>
+			    <li><a href="http://github.com/wbotelhos/nestedy/archive/0.1.2.zip" title="Download" class="download"><i class="icon-download icon-large"></i>v0.1.2</a></li>
           <li><a href="http://github.com/wbotelhos/nestedy" title="Github" target="_blank"><i class="icon-github icon-large"></i>Github</a></li>
           <li><a href="http://wbotelhos.com/labs" title="yLab" target="_blank"><i class="icon-beaker icon-large"></i>yLab</a></li>
           <li><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=X8HEP2878NDEG&amp;item_name=jQuery%20Nestedy" title="Donate" target="_blank"><i class="icon-heart-empty icon-large"></i>Donate</a></li>
@@ -91,6 +91,7 @@
                 <label class="radio">Radio</label>
                 <label class="description">Description</label>
                 <label class="value">Value</label>
+                <label class="hidden">Hidden</label>
                 <label class="remove"></label>
 
                 <div class="nestedy-item">
@@ -124,6 +125,10 @@
 
                   <div class="value-place">
                     <input id="product_prices_attributes_0_value" type="number" name="product[prices_attributes][0][value]" class="input" />
+                  </div>
+
+                  <div class="hidden-value">
+                    <input id="product_prices_attributes_0_hidden" type="hidden" name="product[prices_attributes][0][hidden]" class="input" />
                   </div>
 
                   <div class="remove-place">
@@ -654,7 +659,7 @@
           </div>
 
           <div id="typeful" class="option">
-            <div>typeful: <span>['color', 'date', 'datetime', 'datetime-local', 'email', 'month', 'number', 'range', 'search', 'tel', 'text', 'textarea', 'time', 'url', 'week']</span></div>
+            <div>typeful: <span>['color', 'date', 'datetime', 'datetime-local', 'email', 'hidden', 'month', 'number', 'password', 'range', 'search', 'tel', 'text', 'textarea', 'time', 'url', 'week']</span></div>
             <p>The typeful fields.</p>
           </div>
 
