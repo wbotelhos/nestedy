@@ -1,11 +1,11 @@
-describe('Nestedy', function() {
+describe('normal.html', function() {
   beforeEach(function() {
     Factory.html(
       '<form>' +
         '<div class="nestedy">' +
           '<div class="nestedy-item">' +
-            '<input id="product_prices_attributes_0_hours" type="number" name="product[prices_attributes][0][hours]" />' +
-            '<input id="product_prices_attributes_0_id" type="hidden" name="product[prices_attributes][0][id]" class="id" />' +
+            '<input id="product_prices_attributes_0_hours"  type="number"   name="product[prices_attributes][0][hours]" />' +
+            '<input id="product_prices_attributes_0_id"     type="hidden"   name="product[prices_attributes][0][id]" />' +
             '<input id="product_prices_attributes_0_check1" type="checkbox" name="product[prices_attributes][0][check1]" />' +
             '<input id="product_prices_attributes_0_check2" type="checkbox" name="product[prices_attributes][0][check2]" />' +
             '<div id="product_prices_attributes_0_select">' +
@@ -15,24 +15,24 @@ describe('Nestedy', function() {
                 '<option>2</option>' +
               '</select>' +
             '</div>' +
-            '<input id="product_prices_attributes_0_radio" type="radio" name="product[prices_attributes][0][radio]" />' +
-            '<input id="product_prices_attributes_0_radio" type="radio" name="product[prices_attributes][0][radio]" />' +
-            '<input id="product_prices_attributes_0_description" type="text" name="product[prices_attributes][0][description]" />' +
-            '<input id="product_prices_attributes_0_value" type="number" name="product[prices_attributes][0][value]" />' +
-            '<input id="product_prices_attributes_0_color" type="color" name="product[prices_attributes][0][color]" />' +
-            '<input id="product_prices_attributes_0_date" type="date" name="product[prices_attributes][0][date]" />' +
-            '<input id="product_prices_attributes_0_datetime" type="datetime" name="product[prices_attributes][0][datetime]" />' +
+            '<input id="product_prices_attributes_0_radio"          type="radio"          name="product[prices_attributes][0][radio]" />' +
+            '<input id="product_prices_attributes_0_radio"          type="radio"          name="product[prices_attributes][0][radio]" />' +
+            '<input id="product_prices_attributes_0_description"    type="text"           name="product[prices_attributes][0][description]" />' +
+            '<input id="product_prices_attributes_0_value"          type="number"         name="product[prices_attributes][0][value]" />' +
+            '<input id="product_prices_attributes_0_color"          type="color"          name="product[prices_attributes][0][color]" />' +
+            '<input id="product_prices_attributes_0_date"           type="date"           name="product[prices_attributes][0][date]" />' +
+            '<input id="product_prices_attributes_0_datetime"       type="datetime"       name="product[prices_attributes][0][datetime]" />' +
             '<input id="product_prices_attributes_0_datetime-local" type="datetime-local" name="product[prices_attributes][0][datetime-local]" />' +
-            '<input id="product_prices_attributes_0_email" type="email" name="product[prices_attributes][0][email]" />' +
-            '<input id="product_prices_attributes_0_hidden" type="hidden" name="product[prices_attributes][0][hidden]" />' +
-            '<input id="product_prices_attributes_0_month" type="month" name="product[prices_attributes][0][month]" />' +
-            '<input id="product_prices_attributes_0_password" type="password" name="product[prices_attributes][0][password]" />' +
-            '<input id="product_prices_attributes_0_range" type="range" name="product[prices_attributes][0][range]" min="1" max="10" />' +
-            '<input id="product_prices_attributes_0_search" type="search" name="product[prices_attributes][0][search]" />' +
-            '<input id="product_prices_attributes_0_tel" type="tel" name="product[prices_attributes][0][tel]" />' +
-            '<input id="product_prices_attributes_0_time" type="time" name="product[prices_attributes][0][time]" />' +
-            '<input id="product_prices_attributes_0_url" type="url" name="product[prices_attributes][0][url]" />' +
-            '<input id="product_prices_attributes_0_week" type="week" name="product[prices_attributes][0][week]" />' +
+            '<input id="product_prices_attributes_0_email"          type="email"          name="product[prices_attributes][0][email]" />' +
+            '<input id="product_prices_attributes_0_hidden"         type="hidden"         name="product[prices_attributes][0][hidden]" />' +
+            '<input id="product_prices_attributes_0_month"          type="month"          name="product[prices_attributes][0][month]" />' +
+            '<input id="product_prices_attributes_0_password"       type="password"       name="product[prices_attributes][0][password]" />' +
+            '<input id="product_prices_attributes_0_range"          type="range"          name="product[prices_attributes][0][range]" min="1" max="10" />' +
+            '<input id="product_prices_attributes_0_search"         type="search"         name="product[prices_attributes][0][search]" />' +
+            '<input id="product_prices_attributes_0_tel"            type="tel"            name="product[prices_attributes][0][tel]" />' +
+            '<input id="product_prices_attributes_0_time"           type="time"           name="product[prices_attributes][0][time]" />' +
+            '<input id="product_prices_attributes_0_url"            type="url"            name="product[prices_attributes][0][url]" />' +
+            '<input id="product_prices_attributes_0_week"           type="week"           name="product[prices_attributes][0][week]" />' +
 
             '<i class="nestedy-remove">remove</i>' +
           '</div>' +
@@ -178,7 +178,9 @@ describe('Nestedy', function() {
         self[0].addButton.click();
 
         // then
-        expect(self.find('.nestedy-item:last').find('input[type="color"]').val()).toEqual('#000000');
+        var value = self.find('.nestedy-item:last').find('input[type="color"]').val();
+
+        expect(value == '#000000' || value == '').toBeTruthy();
       });
     });
 
@@ -540,8 +542,8 @@ describe('Nestedy', function() {
         // when
         var proc = function() { self.nestedy('add', 'string'); };
 
-      // then
-      expect(proc).toThrow(new Error("The parameter 'string' passed on add function is not a number!"));
+        // then
+        expect(proc).toThrow(new Error("The parameter 'string' passed on add function is not a number!"));
       });
     });
   });
@@ -1312,6 +1314,91 @@ describe('Nestedy', function() {
 
           // then
           expect(self.find(self[0].opt.model).first().find(':input:first')).toBeFocused();
+        });
+      });
+    });
+  });
+});
+
+describe('multiple-nestedy.html', function() {
+  beforeEach(function() {
+    Factory.html(
+      '<form>' +
+        '<div class="nestedy container-1">' +
+          '<div class="nestedy-item">' +
+            '<input id="container-1_0_container-1" type="number" name="container-1[0][container-1]" />' +
+
+            '<i class="nestedy-remove">remove</i>' +
+          '</div>' +
+        '</div>' +
+
+        '<i data-nestedy=".container-1" class="nestedy-add">add container-1</i>' +
+
+        '<div class="nestedy container-2">' +
+          '<div class="nestedy-item">' +
+            '<input id="container-2_0_container-2" type="number" name="container-2[0][container-2]" />' +
+
+            '<i class="nestedy-remove">remove</i>' +
+          '</div>' +
+        '</div>' +
+
+        '<i data-nestedy=".container-2" class="nestedy-add">add container-2</i>' +
+      '</form>'
+    );
+  });
+
+  afterEach(function() { Factory.clear(); });
+
+  describe('add', function() {
+    context('with more than one add button', function() {
+      context('with data-nestedy', function() {
+        context('clicking on last one', function() {
+          it ('creates one more item only inside the last nestedy', function() {
+            // given
+            var self = $('form');
+
+            // when
+            self.nestedy();
+
+            $(self[0].addButton).last().click();
+
+            // then
+            expect(self.children('.nestedy:last').children().length).toEqual(2);
+          });
+        });
+      });
+
+      context('without data-nestedy', function() {
+        beforeEach(function() {
+          $('.nestedy-add').removeAttr('data-nestedy');
+        });
+
+        it ('throws an exception', function() {
+          // given
+          var self = $('form');
+
+          // when
+          self.nestedy();
+
+          var proc = function() { $(self[0].addButton).last().click(); }
+
+          // then
+          expect(proc).toThrow(new Error('You have multiple add buttons and the clicked one has no the `data-nestedy` attribute!'));
+        });
+      });
+
+      context('after all nestedy be removed from DOM', function() {
+        it ('throws an exception', function() {
+          // given
+          var self = $('form').nestedy();
+
+          self.find('.nestedy-remove').click();
+
+          // when
+          $(self[0].addButton).last().click();
+
+          // then
+          expect(self.children('.nestedy:last').children().length).toEqual(1);
         });
       });
     });
