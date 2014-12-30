@@ -80,7 +80,7 @@
 .nestedy-item { clear: both; }
 .nestedy-item div.select-place { float: left; margin-right: 1%; width: 9% }
 .nestedy-item div.check-place { float: left; margin-right: 1%; width: 6% }
-.nestedy-item div.check-place input:first-child { margin-left: 25%; margin-top: 25px;  }
+.nestedy-item div.check-place input { margin-left: 25%; margin-top: 25px;  }
 .nestedy-item div.hours-place { float: left; margin-right: 1%; width: 9% }
 .nestedy-item div.radio-place { float: left; margin-right: 1%; width: 7% }
 .nestedy-item div.radio-place input:first-child { margin-left: 25%; margin-top: 25px;  }

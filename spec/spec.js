@@ -5,9 +5,8 @@ describe('normal.html', function() {
         '<div class="nestedy">' +
           '<div class="nestedy-item">' +
             '<input id="product_prices_attributes_0_hours"  type="number"   name="product[prices_attributes][0][hours]" />' +
-            '<input id="product_prices_attributes_0_id"     type="hidden"   name="product[prices_attributes][0][id]" />' +
-            '<input id="product_prices_attributes_0_check1" type="checkbox" name="product[prices_attributes][0][check1]" />' +
-            '<input id="product_prices_attributes_0_check2" type="checkbox" name="product[prices_attributes][0][check2]" />' +
+            '<label for="product_prices_attributes_0_check">checkbox prev</label>' +
+            '<input id="product_prices_attributes_0_check" type="checkbox" name="product[prices_attributes][0][check]" />' +
             '<div id="product_prices_attributes_0_select">' +
               '<select name="product[prices_attributes][0][select]">' +
                 '<option></option>' +
@@ -15,8 +14,10 @@ describe('normal.html', function() {
                 '<option>2</option>' +
               '</select>' +
             '</div>' +
-            '<input id="product_prices_attributes_0_radio"          type="radio"          name="product[prices_attributes][0][radio]" />' +
-            '<input id="product_prices_attributes_0_radio"          type="radio"          name="product[prices_attributes][0][radio]" />' +
+            '<input id="product_prices_attributes_0_radio1"         type="radio"          name="product[prices_attributes][0][radio]" />' +
+            '<label for="product_prices_attributes_0_radio1">radio1 next</label>' +
+            '<label for="product_prices_attributes_0_radio2">radio2</label>' +
+            '<input id="product_prices_attributes_0_radio2"         type="radio"          name="product[prices_attributes][0][radio]" />' +
             '<input id="product_prices_attributes_0_description"    type="text"           name="product[prices_attributes][0][description]" />' +
             '<input id="product_prices_attributes_0_value"          type="number"         name="product[prices_attributes][0][value]" />' +
             '<input id="product_prices_attributes_0_color"          type="color"          name="product[prices_attributes][0][color]" />' +
@@ -771,6 +772,27 @@ describe('normal.html', function() {
         expect(/_0_/.test(self.find('.nestedy-item:eq(0) :input').attr('id'))).toBeTruthy();
         expect(/_1_/.test(self.find('.nestedy-item:eq(1) :input').attr('id'))).toBeTruthy();
         expect(/_2_/.test(self.find('.nestedy-item:eq(2) :input').attr('id'))).toBeTruthy();
+      });
+
+      it ('the related labels', function() {
+        // given
+        var self = $('form').nestedy({ idx: /{index}/ });
+
+        // when
+        self[0].addButton.click().click();
+
+        // then
+        expect(/_0_/.test(self.find('.nestedy-item:eq(0) label:eq(0)').attr('for'))).toBeTruthy();
+        expect(/_0_/.test(self.find('.nestedy-item:eq(0) label:eq(1)').attr('for'))).toBeTruthy();
+        expect(/_0_/.test(self.find('.nestedy-item:eq(0) label:eq(2)').attr('for'))).toBeTruthy();
+
+        expect(/_1_/.test(self.find('.nestedy-item:eq(1) label:eq(0)').attr('for'))).toBeTruthy();
+        expect(/_1_/.test(self.find('.nestedy-item:eq(1) label:eq(1)').attr('for'))).toBeTruthy();
+        expect(/_1_/.test(self.find('.nestedy-item:eq(1) label:eq(2)').attr('for'))).toBeTruthy();
+
+        expect(/_2_/.test(self.find('.nestedy-item:eq(2) label:eq(0)').attr('for'))).toBeTruthy();
+        expect(/_2_/.test(self.find('.nestedy-item:eq(2) label:eq(1)').attr('for'))).toBeTruthy();
+        expect(/_2_/.test(self.find('.nestedy-item:eq(2) label:eq(2)').attr('for'))).toBeTruthy();
       });
     });
 
