@@ -888,6 +888,8 @@ describe('normal.html', function() {
       expect(opt.add).toBeUndefined();
       expect(opt.addButton).toEqual('.nestedy-add');
       expect(opt.content).toEqual('.nestedy');
+      expect(opt.destroy).toBeFalsy();
+      expect(opt.destroyex).toEqual(/(\[)[^\[]*(\])$/);
       expect(opt.excludes).toEqual(['id$="id"', 'name$="id"', 'name$="id\\]"']);
       expect(opt.focus).toEqual(':last');
       expect(opt.idx).toEqual(/(_)\d(_)/);
