@@ -544,7 +544,7 @@ describe('normal.html', function() {
         var proc = function() { self.nestedy('add', 'string'); };
 
         // then
-        expect(proc).toThrow(new Error("The parameter 'string' passed on add function is not a number!"));
+        expect(proc).toThrow(new Error('The parameter "string" passed on add function is not a number!'));
       });
     });
   });
@@ -1045,7 +1045,7 @@ describe('normal.html', function() {
       var proc = function() { self.nestedy('remove', 'wrong'); };
 
       // then
-      expect(proc).toThrow(new Error("The parameter 'wrong' passed on remove function is invalid!"));
+      expect(proc).toThrow(new Error('The parameter "wrong" passed on remove function is invalid!'));
     });
 
     describe('first', function() {
