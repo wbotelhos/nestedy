@@ -25,7 +25,7 @@ describe('#remove', function() {
       var self = $('form').nestedy({ destroy: true });
 
       // when
-      $('.nestedy-remove').click();
+      $('.nestedy-remove').trigger('click');
 
       // then
       expect(self.find('.nestedy-item').is(':hidden')).toBeTruthy();
@@ -36,7 +36,7 @@ describe('#remove', function() {
       var self = $('form').nestedy({ destroy: true });
 
       // when
-      $('.nestedy-remove').click();
+      $('.nestedy-remove').trigger('click');
 
       // then
       var destroy = self.find('input[value="true"]')[0];

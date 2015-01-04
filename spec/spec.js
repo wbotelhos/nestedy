@@ -592,92 +592,6 @@ describe('normal.html', function() {
     });
   });
 
-  describe(':exclude', function() {
-    context('as default', function() {
-      beforeEach(function() {
-        this.self = $('form');
-
-        var item = this.self.find('.nestedy-item');
-
-        this.ids = [
-          '<input id="id"     type="text" class="blacklist" />',
-          '<input id="foo-id" type="text" class="blacklist" />',
-          '<input id="foo_id" type="text" class="blacklist" />'
-        ];
-
-        this.names = [
-          '<input name="id"      type="text" class="blacklist" />',
-          '<input name="foo.id"  type="text" class="blacklist" />',
-          '<input name="foo[id]" type="text" class="blacklist" />'
-        ];
-
-
-        for (var i = 0; i < this.ids.length; i++) {
-          item.append(this.ids[i]);
-        }
-
-        for (var i = 0; i < this.names.length; i++) {
-          item.append(this.names[i]);
-        }
-      });
-
-      it ('excludes the common ids', function() {
-        // given
-        var self = this.self.nestedy();
-
-        // when
-        self[0].addButton.click();
-
-        // then
-        expect(self.find('.nestedy-item:last')).not.toContain('.blacklist');
-      });
-    });
-
-    it ('excludes fields by id', function() {
-      // given
-      var self = $('form').nestedy({ excludes: ['#product_prices_attributes_0_id'] });
-
-      // when
-      self[0].addButton.click();
-
-      // then
-      expect(self.find('.nestedy-item:last').find('.id')).not.toExist();
-    });
-
-    it ('excludes fields by class', function() {
-      // given
-      var self = $('form').nestedy({ excludes: ['.id'] });
-
-      // when
-      self[0].addButton.click();
-
-      // then
-      expect(self.find('.nestedy-item:last').find('.id')).not.toExist();
-    });
-
-    it ('excludes fields name', function() {
-      // given
-      var self = $('form').nestedy({ excludes: ['name="product[prices_attributes][0][id]"'] });
-
-      // when
-      self[0].addButton.click();
-
-      // then
-      expect(self.find('.nestedy-item:last').find('.id')).not.toExist();
-    });
-
-    it ('excludes fields type', function() {
-      // given
-      var self = $('form').nestedy({ excludes: ['type="hidden"'] });
-
-      // when
-      self[0].addButton.click();
-
-      // then
-      expect(self.find('.nestedy-item:last').find('.id')).not.toExist();
-    });
-  });
-
   describe(':focus', function() {
     context('on add', function() {
       context('with focus last', function() {
@@ -873,31 +787,6 @@ describe('normal.html', function() {
         // then
         expect(self.find('.nestedy-item:eq(0) :input').attr('name').indexOf('$10$2')).toEqual(-1);
       });
-    });
-  });
-
-  describe('options', function() {
-    it ('has the right value options', function() {
-      // given
-      var nestedy = $.fn.nestedy
-
-      // when
-      var opt = nestedy.defaults
-
-      // then
-      expect(opt.add).toBeUndefined();
-      expect(opt.addButton).toEqual('.nestedy-add');
-      expect(opt.content).toEqual('.nestedy');
-      expect(opt.destroy).toBeFalsy();
-      expect(opt.destroyex).toEqual(/(\[)[^\[]*(\])$/);
-      expect(opt.excludes).toEqual(['id$="id"', 'name$="id"', 'name$="id\\]"']);
-      expect(opt.focus).toEqual(':last');
-      expect(opt.idx).toEqual(/(_)\d(_)/);
-      expect(opt.model).toEqual('.nestedy-item');
-      expect(opt.namex).toEqual(/(\[)\d(\])/);
-      expect(opt.remove).toBeUndefined();
-      expect(opt.removeButton).toEqual('.nestedy-remove');
-      expect(opt.template).toBeUndefined();
     });
   });
 

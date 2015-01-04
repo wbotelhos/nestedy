@@ -1,5 +1,20 @@
 # jQuery Nestedy - A nested fields creator - http://wbotelhos.com/nestedy
 
+## Soon
+
+### Fixes
+
+### Changes
+
+- Now is possible pass a callback like `filter` to `excludes` option.
+
+### News
+
+- Added option `destroy` to just hide the item and adds a hidden field `_destroy` as `true`.
+- Added option `destroyex` to indicate what part of name will be replace to `_destroy`. This is the attribute name.
+
+### Bugfix
+
 ## 0.1.2
 
 - Added some fields types of HTML 4 and 5 to typeful option.
