@@ -4,14 +4,17 @@
 
 ### Fixes
 
+- Hidden fields with value were cleared.
+
 ### Changes
 
-- Now is possible pass a callback like `filter` to `excludes` option.
+- The option `excludes` now can receive a callback like `filter` to choose the field.
 
 ### News
 
 - Added option `destroy` to just hide the item and adds a hidden field `_destroy` as `true`.
-- Added option `destroyex` to indicate what part of name will be replace to `_destroy`. This is the attribute name.
+- Added option `destroyex` to indicate what part of the field name will be replace to `_destroy`.
+- Added option `clear` to choose the fields will be cleared.
 
 ### Bugfix
 

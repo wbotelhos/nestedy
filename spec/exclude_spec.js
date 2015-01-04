@@ -1,4 +1,6 @@
 describe('#exclude', function() {
+  'use strict';
+
   beforeEach(function() {
     Factory.html(
       '<form>' +
@@ -23,7 +25,7 @@ describe('#exclude', function() {
     it ('excludes all returned item', function() {
       // given
       var self = $('form').nestedy({
-        excludes: function(index, el) {
+        excludes: function() {
           return this.id.match(/product_prices_attributes_\d_name/);
         }
       });

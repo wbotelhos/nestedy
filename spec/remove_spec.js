@@ -1,4 +1,6 @@
 describe('#remove', function() {
+  'use strict';
+
   beforeEach(function() {
     Factory.html(
       '<form>' +
