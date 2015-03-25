@@ -15,6 +15,7 @@
 - Added option `destroy` to just hide the item and adds a hidden field `_destroy` as `true`.
 - Added option `destroyex` to indicate what part of the field name will be replace to `_destroy`.
 - Added option `clear` to choose the fields will be cleared.
+- Added option `clone` to choose if `$.clone` will clone the binds.
 
 ### Bugfix
 

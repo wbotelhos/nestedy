@@ -22,6 +22,7 @@ jQuery Nestedy is a plugin to create dynamically nested fields.
 add          : undefined                                  // Callback trigged when the add button is clicked.
 addButton    : '.nestedy-add'                             // The add button element.
 checkable    : ['checkbox', 'radio']                      // The checkable fields. This fields will be checked with checked="checked".
+clone        : true                                       // If clone will copy the binds.
 content      : '.nestedy'                                 // Place where the items will be copied.
 excludes     : ['id$="id"', 'ame$="id"', 'name$="id\\]"'] // Selectors used to exclude field of a item before clone it.
 focus        : ':last'                                    // The item you want focus, you can choose `:first`, `:last` or `undefined`.
@@ -33,24 +34,24 @@ removeButton : '.nestedy-remove'                          // The class name of t
 selectable   : ['select-one', 'select-multiple']          // The selectable fields. This fields will be selected with selected="selected"
 template     : undefined                                  // The element inside the `body` that will be used as a model to be cloned.
 typeful      : [                                          // The typeful fields.
-                 'color',
-                 'date',
-                 'datetime',
-                 'datetime-local',
-                 'email',
-                 'hidden',
-                 'month',
-                 'number',
-                 'password',
-                 'range',
-                 'search',
-                 'tel',
-                 'text',
-                 'textarea',
-                 'time',
-                 'url',
-                 'week'
-              ]
+                  'color',
+                  'date',
+                  'datetime',
+                  'datetime-local',
+                  'email',
+                  'hidden',
+                  'month',
+                  'number',
+                  'password',
+                  'range',
+                  'search',
+                  'tel',
+                  'text',
+                  'textarea',
+                  'time',
+                  'url',
+                  'week'
+               ]
 ```
 
 ## Usage without template
